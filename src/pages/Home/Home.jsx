@@ -29,7 +29,7 @@ const Home = () => {
             <TitleCards title={'Upcoming'} category={'popular'}/>
             <TitleCards title={'Top Pics for you'} category={'top_rated'}/>
         </div>
-        <Footer/>
+        <Footer/> 
     </div>
   )
 }

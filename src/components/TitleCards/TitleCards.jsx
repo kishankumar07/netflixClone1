@@ -1,7 +1,10 @@
 import './TitleCards.css'
-import cards_data from '../../assets/cards/Cards_data'
+// import cards_data from '../../assets/cards/Cards_data'
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom';
 
+
+// eslint-disable-next-line react/prop-types
 const TitleCards = ({title,category}) => {
     // console.log('this is the category',category)
     const cardsRef = useRef();
@@ -28,7 +31,6 @@ const TitleCards = ({title,category}) => {
         .then(response => setApiResponse(response.results))
         .catch(err => console.error('error while fetching:',err));
 
-
         cardsRef.current.addEventListener('wheel',handleWheel);
     },[])
 
@@ -41,10 +43,10 @@ const TitleCards = ({title,category}) => {
         <div className='card-list' ref={cardsRef}>
             {
                 apiResponse.map((card,index)=>{
-                    return <div className='card' key={index}>
+                    return <Link to={`/player/${card.id}`} className='card' key={index}>
                                 <img src={`https://image.tmdb.org/t/p/w500`+card.backdrop_path} alt="" />
                                 <p>{card.original_title}</p>
-                           </div>
+                           </Link>
                 })
             }
         </div>
